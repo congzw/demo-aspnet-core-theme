@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
+using System.Collections.Generic;
 
 namespace Demo.Web
 {
@@ -7,7 +8,17 @@ namespace Demo.Web
     {
         string GetTheme(HttpContext httpContext);
     }
-    
+
+    public static class MyViewLocationExtForTheme
+    {
+        public static string Category_Theme = "_Themes";
+
+        public static IEnumerable<string> CreateForTheme(this MyViewLocation myViewLocation, string theme, IEnumerable<string> viewLocations)
+        {
+            return myViewLocation.Create(Category_Theme, theme, viewLocations);
+        }
+    }
+
     public static class MyHttpContextHelperExtForTheme
     {
         public static Func<IThemeContextService> Resolve { get; set; }

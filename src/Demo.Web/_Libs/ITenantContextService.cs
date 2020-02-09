@@ -1,11 +1,22 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
+using System.Collections.Generic;
 
 namespace Demo.Web
 {
     public interface ITenantContextService
     {
         string GetTheme(HttpContext httpContext);
+    }
+
+    public static class MyViewLocationExtForTenant
+    {
+        public static string Category_Tenant = "_Tenants";
+
+        public static IEnumerable<string> CreateForTenant(this MyViewLocation myViewLocation, string tenant, IEnumerable<string> viewLocations)
+        {
+            return myViewLocation.Create(Category_Tenant, tenant, viewLocations);
+        }
     }
 
     public static class MyHttpContextHelperExtForTenant

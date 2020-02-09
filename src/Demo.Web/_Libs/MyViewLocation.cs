@@ -27,22 +27,4 @@ namespace Demo.Web
 
         public static MyViewLocation Instance = new MyViewLocation();
     }
-
-    public static class MyViewLocationExtension
-    {
-        public static string Category_Theme = "_Themes";
-
-        public static IEnumerable<string> CreateForTheme(this MyViewLocation moreViewLocation, string theme, IEnumerable<string> viewLocations)
-        {
-            return moreViewLocation.Create(Category_Theme, theme, viewLocations);
-        }
-
-
-        public static string Category_Tenant = "_Tenants";
-
-        public static IEnumerable<string> CreateForTenant(this MyViewLocation moreViewLocation, string tenant, IEnumerable<string> viewLocations)
-        {
-            return moreViewLocation.Create(Category_Tenant, tenant, viewLocations);
-        }
-    }
 }
