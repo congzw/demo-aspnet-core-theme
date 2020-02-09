@@ -1,0 +1,5 @@
+﻿@model System.String
+@{
+    var desc = Model == null ? string.Empty : "From " + Model;
+}
+<p class="text-center pathDesc text-warning">@this.Path @desc</p>
